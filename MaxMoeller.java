@@ -2,7 +2,8 @@
 import java.awt.geom.*;     // for Point2D.Double
 import java.util.ArrayList; // for ArrayList
 import gpdraw.*;            // for DrawingTool
-public class IrregularPolygon{
+
+public class MaxMoeller implements Polygon{
     ArrayList <Point2D.Double> myPolygon;
     double perim;
     double areaTotal;
@@ -11,11 +12,10 @@ public class IrregularPolygon{
     double total; 
     DrawingTool myPen;
     SketchPad myPaper;
-
     public String getName(){
         return "Maxwell Moeller";
     }
-    
+
     public IrregularPolygon() { 
         myPolygon = new ArrayList <Point2D.Double> (); 
         x = 1;
@@ -47,17 +47,16 @@ public class IrregularPolygon{
         if(myPolygon.size() < 3){
             return -1;
         }
-        
+
         int arrayLength = myPolygon.size() - 1;
         for(int i = 0; i < myPolygon.size() - 1; i++)
         {
             perim += ((Point2D.Double)myPolygon.get(i)).distance((Point2D.Double)myPolygon.get(i + 1));    
         }
-        perim += ((Point2D.Double)myPolygon.get(0)).distance((Point2D.Double)myPolygon.get(arrayLength));    
-
+        perim += ((Point2D.Double)myPolygon.get(0)).distance((Point2D.Double)myPolygon.get(arrayLength));
         return perim;
     }
-    
+
     public double area() { 
 
         for(int i = 0; i < myPolygon.size() - 1; i++)
